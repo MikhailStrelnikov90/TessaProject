@@ -8,40 +8,44 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    private By aboutSystemButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][1]");
-    private By logoButton = By.xpath("//div[@class='site_logo']"); //кнопка на логотипе в верхнем левом углу
-    private By aboutCompanyButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][2]");
-    private By ServiceButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][3]");
-    private By priceListButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][4]");
-    private By partnersButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][5]");
-    private By blogTessaButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][6]");
+    //Элементы управления главного меню сайта
+    private By aboutSystemButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][1]"); //кнопка "Система" в главном меню
+    private By logoButton = By.xpath("//div[@class='site_logo']"); //логотип в верхнем левом углу сайта
+    private By aboutCompanyButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][2]"); //кнопка "Компания в главном меню сайта
+    private By ServiceButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][3]"); //кнопка "Услуги" в главном меню
+    private By priceListButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][4]"); //кнопка "Купить" в главном меню
+    private By partnersButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][5]"); //кнопка "Партнеры" в главном меню
+    private By blogTessaButton = By.xpath("//div[@class='container']//li[@class='header_nav_list_item'][6]"); //кнопка "Блог" в главном меню
+    //элементы формы "Контакты" на главной странице
     private By nameField = By.xpath("//div/input[@name='user_name']");
     private By numberField = By.xpath("//div/input[@name='user_contacts']");
     private By textField = By.xpath("//div/textarea[@name='user_comments']");
     private By feedbackButton = By.xpath("//form[@class='contacts_form']/div/button[@name='contacts_subm']");
-    private By checkButton = By.xpath("//div[2]/div[@class='slide_btn_wrap']/a[@href='/company/contacts/']"); //кнопка "Проверьте сами на главной странице
-    private By scrollUp = By.xpath("//a[@class='scroll_up is_visible']"); //скролл вверх
-    private By scrollDown = By.xpath("//div[2]/div[@class='slide_down_btn_wrap']/a"); //скролл вниз по кнопке на главной странице
-    private By flipNext = By.xpath("//div[@class='main_slider_button_next']"); //перелистывание направо меню на главной странице
-    private By flipLeft = By.xpath("//div[@class='main_slider_button_prev']"); //перелистывание налево меню на главной странице
+    //элементы формы "Поиск по сайту"
     private By searchButton = By.xpath("//div[@class=\"user_action_stuff\"]//div[@class=\"search_box_button\"]");
     private By searchField = By.xpath("//div[@class=\"user_action_stuff\"]//div[@class=\"header_search_wrap_helper\"]//input[@type=\"search\"]");
-    private By engVersButton = By.xpath("//div[@class=\"user_action_stuff\"]//a[@class=\"lang_box\"]");
+    //элементы формы "Заказать звонок"
     private By callButton = By.xpath("//div[@class=\"call_back\"]/a[@class=\"call_back_btn\"]");
     private By callNameField = By.xpath("//input[@name=\"user_call_name\"]");
     private By callNumberField = By.xpath("//form[@class=\"call_request_form\"]/div[@class=\"field_group\"]/input[@name=\"user_contacts\"]");
     private By callEndButton = By.xpath("//button[@id=\"call_req_btn\"]");
-    private By linkOnContactsButton1 = By.xpath("//div[@class=\"swiper-slide slide_speed swiper-slide-active\"]//a[@href=\"/company/contacts/\"]");    //Проверьте сами
-    private By linkOnIntegrationVTBButton = By.xpath("//div[@class=\"slide_btn_wrap\"]/a[@href=\"/system/implementations/TESSA-v-vtb24\"]");  //Подробнее о внедрении
-    private By linkOnContactsButton2 = By.xpath("//div[@class=\"swiper-slide slide_users skrollable skrollable-between swiper-slide-active\"]//a[@href=\"/company/contacts/\"]");  //Подобрать для себя
-    private By linkOnNews = By.xpath("//div[@class=\"news_btn_wrap\"]/a[@href=\"/company/news/\"]");   //Все новости
-    private By linkIntegrations = By.xpath("//div[@class=\"proj_btn_wrap\"]/a[@href=\"/system/implementations/\"]"); //Все проекты
-    private By linkOnCustomers = By.xpath("//div[@class=\"reviews_btn_wrap\"]/a[@href=\"/company/customers/\"]");  //Все клиенты
-    private By linkOnRewiews = By.xpath("//div[@class=\"reviews_btn_wrap\"]/a[@href=\"/company/reviews/\"]");   //Все отзывы
-    private By textForAssert = By.xpath("//div[@class=\"swiper-slide slide_speed swiper-slide-active\"]/div[@class=\"container\"]/div[@class=\"slide_desc\"]");
-    private By flipNextReviews = By.xpath("//div[@class=\"reviews_btn_next\"]");
-    private By flipBackReviews = By.xpath("//div[@class=\"reviews_btn_prev\"]");
+    //ссылки на страницы сайта на главной странице
+    private By linkOnContactsButton1 = By.xpath("//div[@class=\"swiper-slide slide_speed swiper-slide-active\"]//a[@href=\"/company/contacts/\"]");    //кнопка "Проверьте сами"
+    private By linkOnIntegrationVTBButton = By.xpath("//div[@class=\"slide_btn_wrap\"]/a[@href=\"/system/implementations/TESSA-v-vtb24\"]");  //кнопка "Подробнее о внедрении"
+    private By linkOnContactsButton2 = By.xpath("//div[@class=\"swiper-slide slide_users skrollable skrollable-between swiper-slide-active\"]//a[@href=\"/company/contacts/\"]");  //кнопка "Подобрать для себя"
+    private By linkOnNews = By.xpath("//div[@class=\"news_btn_wrap\"]/a[@href=\"/company/news/\"]");   //кнопка "Все новости"
+    private By linkIntegrations = By.xpath("//div[@class=\"proj_btn_wrap\"]/a[@href=\"/system/implementations/\"]"); //кнопка "Все проекты"
+    private By linkOnCustomers = By.xpath("//div[@class=\"reviews_btn_wrap\"]/a[@href=\"/company/customers/\"]");  //кнопка "Все клиенты"
+    private By linkOnReviews = By.xpath("//div[@class=\"reviews_btn_wrap\"]/a[@href=\"/company/reviews/\"]");   //кнопка "Все отзывы"
+    private By engVerButton = By.xpath("//div[@class=\"user_action_stuff\"]//a[@class=\"lang_box\"]"); //кнопка перехода на англоязычную версию страницы
+    //другие элементы
+    private By textForAssert = By.xpath("//div[@class=\"swiper-slide slide_speed swiper-slide-active\"]/div[@class=\"container\"]/div[@class=\"slide_desc\"]"); //текст для проверки
+    private By flipNextReviews = By.xpath("//div[@class=\"reviews_btn_next\"]"); //перелистывание отзывов вперед на главной страницы
+    private By flipBackReviews = By.xpath("//div[@class=\"reviews_btn_prev\"]"); //перелистывание отзывов назад на главной странице
+    private By scrollUp = By.xpath("//a[@class='scroll_up is_visible']"); //скролл вверх
+    private By scrollDown = By.xpath("//div[2]/div[@class='slide_down_btn_wrap']/a"); //скролл вниз по кнопке на главной странице
+    private By flipNext = By.xpath("//div[@class='main_slider_button_next']"); //перелистывание направо меню на главной странице
+    private By flipLeft = By.xpath("//div[@class='main_slider_button_prev']"); //перелистывание налево меню на главной странице
 
     public void flippingNextAndBackReviews(){
         driver.findElement(flipNextReviews).click();
@@ -52,7 +56,6 @@ public class MainPage {
         }
         driver.findElement(flipBackReviews).click();
     }
-
 
 
     public String textForAssertField(){
@@ -120,7 +123,7 @@ public class MainPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.findElement(linkOnRewiews).click();
+        driver.findElement(linkOnReviews).click();
     }
 
     public MainPage callForm(String name, String number){
@@ -150,7 +153,7 @@ public class MainPage {
     }
 
     public void clickEngVersButton(){
-        driver.findElement(engVersButton).click();
+        driver.findElement(engVerButton).click();
     }
 
 
@@ -168,8 +171,6 @@ public class MainPage {
         driver.findElement(searchField).sendKeys(text);
         return this;
     }
-
-
 
     public void listAllButtons() {
         List<WebElement> listButtons = driver.findElements(By.xpath("//ul[@class='slider_nav_list']/li"));
@@ -242,7 +243,7 @@ public class MainPage {
     }
 
     public ContactsPage clickCheckButton() {
-        driver.findElement(checkButton).click();
+        driver.findElement(linkOnContactsButton1).click();
         return new ContactsPage(driver);
     }
 

@@ -9,13 +9,7 @@ import java.time.Duration;
 public class BlogTest {
     private WebDriver driver;
     private MainPage mainPage;
-    private Partners partners;
-    private Price price;
-    private AboutSystem aboutSystem;
-    private AboutService aboutService;
-    private AboutCompany aboutCompany;
     private Blog blog;
-    private ContactsPage contactsPage;
 
     @Before
     public void start(){

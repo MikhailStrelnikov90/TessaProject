@@ -13,13 +13,6 @@ public class MainPageTest {
 
 private WebDriver driver;
 private MainPage mainPage;
-private Partners partners;
-private Price price;
-private AboutSystem aboutSystem;
-private AboutService aboutService;
-private AboutCompany aboutCompany;
-private Blog blog;
-private ContactsPage contactsPage;
 private Reviews reviews;
 
     @Before
@@ -40,7 +33,7 @@ private Reviews reviews;
     @Test //Поиск информации по сайту через кнопку "Поиск по сайту"
     public void searchInfoTest(){
     mainPage.clickSearchMainPage();
-    mainPage.sendTextForSearchField("user");
+    mainPage.textForSearchField("tessa");
     }
 
     @Test //Переход на английскую версию страницы через кнопку "Изменить язык"
