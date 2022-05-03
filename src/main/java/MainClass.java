@@ -14,8 +14,5 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://mytessa.ru/");
-        MainPage mainPage = new MainPage(driver);
-        //driver.quit();
-
         }
     }

@@ -1,7 +1,7 @@
 import org.openqa.selenium.WebDriver;
 
 public class Articles {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public Articles(WebDriver driver) {
         this.driver = driver;

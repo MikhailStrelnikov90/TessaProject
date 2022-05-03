@@ -13,7 +13,7 @@ public class MainPageTest {
 
 private WebDriver driver;
 private MainPage mainPage;
-private Reviews reviews;
+private Blog blog;
 
     @Before
     public void start(){
@@ -28,17 +28,27 @@ private Reviews reviews;
     @Test //Переход на другие страницы сайта через меню на главной странице
     public void moveAllPagesOnMainPage(){
         mainPage.listAllPages();
+        for (String tab : driver.getWindowHandles()){
+            driver.switchTo().window(tab);
+        }
+        blog = new Blog(driver);
+        String textBlogPage = blog.textForAssertButtons();
+        Assert.assertEquals("Блог платформы TESSA", textBlogPage);
     }
 
     @Test //Поиск информации по сайту через кнопку "Поиск по сайту"
     public void searchInfoTest(){
     mainPage.clickSearchMainPage();
     mainPage.textForSearchField("tessa");
+        String textSearchPage = mainPage.textForAssertSearch();
+        Assert.assertEquals("Поиск по сайту", textSearchPage);
     }
 
     @Test //Переход на английскую версию страницы через кнопку "Изменить язык"
     public void ChangeLanguage(){
         mainPage.clickEngVersButton();
+        String textEngVerPage = mainPage.textForAssertEngVer();
+        Assert.assertEquals("TESSA - document management system", textEngVerPage);
     }
 
     @Test //Заказ обратного звонка при нажатии на кнопку "Заказать звонок"
@@ -56,78 +66,64 @@ private Reviews reviews;
     }
 
     @Test //Переход на другие страницы сайта через кнопки на главной странице
-    public void linkPagesButtonTest(){
+    public void linkPagesButtonTest() throws InterruptedException {
         mainPage.allLinksMainPage();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        reviews = new Reviews(driver);
+        Thread.sleep(3000);
+        Reviews reviews = new Reviews(driver);
         String textButton = reviews.textOnReviews();
         Assert.assertEquals("Отзывы, рекомендательные письма", textButton);
     }
 
     @Test //Перелистывание блока с преимуществами системы нажатиями на кнопки "Следующая тема" и "Предыдущая тема" на главной странице
-    public void flippingChapter1(){
+    public void flippingChapter1() throws InterruptedException {
         mainPage.flippingNext();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         mainPage.flippingBack();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         String textFlipButton = mainPage.textForAssertField();
         Assert.assertEquals("Самая быстрая СЭД", textFlipButton);
     }
 
     @Test //Перелистывание отзывов заказчиков нажатиями на кнопки "Следующая тема" и "Предыдущая тема" на главной странице
-    public void flippingChapter2(){
+    public void flippingChapter2() throws InterruptedException {
         mainPage.flippingNextAndBackReviews();
+        Thread.sleep(2000);
+        String textFlipReviews = mainPage.textForAssertFlippingReviews();
+        Assert.assertEquals("ВТБ", textFlipReviews);
     }
 
 
     @Test //Отправка запроса при заполнении формы на главной странице
     public void feedBackTest(){
-    mainPage = mainPage.feedbackForm("username", "12345", "test");
+    mainPage.feedbackForm("username", "12345", "test");
    String alertText = mainPage.textAlert();
    Assert.assertEquals("Ваш запрос был успешно отправлен!", alertText);
    }
 
    @Test //Отправка запроса при заполнении формы невалидными значениями на главной странице
    public void feedBackWithInvalidValTest(){
-       mainPage = mainPage.feedbackForm("", "12345", "test");
+       mainPage.feedbackForm("", "12345", "test");
        String alertText = mainPage.textAlert();
        Assert.assertEquals("Поле «Ваше имя» обязательно для заполнения.", alertText);
    }
 
 
    @Test //Перелистывание блока с преимуществами системы нажатиями на кнопки на главной странице
-   public void listButtoncheck() {
+   public void listButtoncheck() throws InterruptedException {
     mainPage.listAllButtons();
-       try {
-           Thread.sleep(5000);
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-       String textLastButton = mainPage.textLsButton();
+    Thread.sleep(5000);
+    String textLastButton = mainPage.textLsButton();
     Assert.assertEquals("Сохраненных нервных клеток", textLastButton);
    }
 
    @Test //Скролл главной страницы с помощью функциональных элементов
-   public void scrollMainPageTest(){
-        mainPage.scrollUpMainPage();
-       try {
-           Thread.sleep(1000);
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
+   public void scrollMainPageTest() throws InterruptedException {
        mainPage.scrollDownMainPage();
+       Thread.sleep(1000);
+       mainPage.scrollUpMainPage();
+       Thread.sleep(1000);
+       String textFlipButton = mainPage.textForAssertField();
+       Assert.assertEquals("Самая быстрая СЭД", textFlipButton);
    }
 
     @After

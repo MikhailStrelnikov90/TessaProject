@@ -9,8 +9,8 @@ import java.time.Duration;
 
 public class ContactsPageTest {
     private WebDriver driver;
-    private MainPage mainPage;
     private ContactsPage contactsPage;
+    private MainPage mainPage;
 
     @Before
     public void start(){
@@ -19,7 +19,7 @@ public class ContactsPageTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://mytessa.ru/");
-        mainPage = new MainPage(driver);
+        MainPage mainPage = new MainPage(driver);
         mainPage.clickCheckButton();
         contactsPage = new ContactsPage(driver);
     }
@@ -32,14 +32,22 @@ public class ContactsPageTest {
     }
 
     @Test //Возврат на главную страницу при нажатии на логотип системы Tessa на странице контактной информации
-    public void clickOnLogoTest(){
+    public void clickOnLogoTest() throws InterruptedException {
         contactsPage.clickLogoButton();
+        Thread.sleep(2000);
+        mainPage = new MainPage(driver);
+        String textFlipButton = mainPage.textForAssertField();
+        Assert.assertEquals("Самая быстрая СЭД", textFlipButton);
     }
 
 
     @Test //Возврат на главную страницу при нажатии на ссылку главной страницы на странице контактной информации
-    public void clickOnLinkTest(){
+    public void clickOnLinkTest() throws InterruptedException {
         contactsPage.clickLinkOnMainPage();
+        Thread.sleep(2000);
+        mainPage = new MainPage(driver);
+        String textFlipButton = mainPage.textForAssertField();
+        Assert.assertEquals("Самая быстрая СЭД", textFlipButton);
     }
 
     @Test //Отправка запроса при заполнении формы невалидными данными на странице контактной информации
