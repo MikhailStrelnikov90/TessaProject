@@ -19,12 +19,14 @@ public class ContactsPage {
     private final By logoButton = By.xpath("//img[@src=\"/img/svg_icons/icon_main_logo.svg\"]");
     private final By linkOnMainPage = By.xpath("//li[1]/a[@class=\"bread_crumbs_link\"]");
 
-    public void clickLinkOnMainPage(){
+    public MainPage clickLinkOnMainPage(){
         driver.findElement(linkOnMainPage).click();
+        return new MainPage(driver);
     }
 
-    public void clickLogoButton(){
+    public MainPage clickLogoButton(){
         driver.findElement(logoButton).click();
+        return new MainPage(driver);
     }
 
     public void typeNameContacts(String name){

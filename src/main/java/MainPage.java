@@ -53,7 +53,6 @@ public class MainPage {
         driver.findElement(flipBackReviews).click();
     }
 
-
     public String textForAssertField(){
         return driver.findElement(textForAssert).getText();
     }
@@ -63,58 +62,26 @@ public class MainPage {
         driver.navigate().back();
         Thread.sleep(2000);
         driver.findElement(flipNext).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(linkOnIntegrationVTBButton).click();
         driver.navigate().back();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(flipNext).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(flipNext).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(linkOnContactsButton2).click();
         driver.navigate().back();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(linkOnNews).click();
         driver.navigate().back();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(linkIntegrations).click();
         driver.navigate().back();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         driver.findElement(linkOnCustomers).click();
         driver.navigate().back();
-        try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.findElement(linkOnReviews).click();
     }
 
@@ -145,7 +112,6 @@ public class MainPage {
         driver.findElement(engVerButton).click();
     }
 
-
     public void clickSearchMainPage(){
         driver.findElement(searchButton).click();
     }
@@ -166,18 +132,14 @@ public class MainPage {
         }
     }
 
-    public void listAllPages(){
+    public Blog listAllPages() throws InterruptedException {
         List<WebElement> listPages = driver.findElements(By.xpath("//div[@class=\"container\"]//ul[@class=\"header_nav_list\"]/li"));
         for(int i = 1; i <= listPages.size();){
             driver.findElement(By.xpath("//div[@class=\"container\"]//ul[@class=\"header_nav_list\"]/li["+ i +"]")).click();
             i++;
-            try {
                 Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
-
-            }
+        return new Blog(driver);
         }
 
     public void typeName (String name){
@@ -192,43 +154,43 @@ public class MainPage {
         driver.findElement(textField).sendKeys(text);
     }
 
-    public void clickSystemButton() {
+    public AboutSystem clickSystemButton() {
         driver.findElement(aboutSystemButton).click();
-        new AboutSystem(driver);
+        return new AboutSystem(driver);
     }
 
-    public void clickCompanyButton() {
+    public AboutCompany clickCompanyButton() {
         driver.findElement(aboutCompanyButton).click();
-        new AboutCompany(driver);
+        return new AboutCompany(driver);
     }
 
-    public void clickServiceButton() {
+    public AboutService clickServiceButton() {
         driver.findElement(ServiceButton).click();
-        new AboutService(driver);
+        return new AboutService(driver);
     }
 
     public void clickLogoButton(){
         driver.findElement(logoButton).click();
     }
 
-    public void clickPriceListButton() {
+    public Price clickPriceListButton() {
         driver.findElement(priceListButton).click();
-        new Price(driver);
+        return new Price(driver);
     }
 
-    public void clickPartnersButton() {
+    public Partners clickPartnersButton() {
         driver.findElement(partnersButton).click();
-        new Partners(driver);
+        return new Partners(driver);
     }
 
-    public void clickBlogButton() {
+    public Blog clickBlogButton() {
         driver.findElement(blogTessaButton).click();
-        new Blog(driver);
+        return new Blog(driver);
     }
 
-    public void clickCheckButton() {
+    public ContactsPage clickCheckButton() {
         driver.findElement(linkOnContactsButton1).click();
-        new ContactsPage(driver);
+        return new ContactsPage(driver);
     }
 
     public void clickFeedbackButton() {

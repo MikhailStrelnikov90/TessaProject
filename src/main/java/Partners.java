@@ -22,8 +22,8 @@ public class Partners {
         return driver.findElement(headPartners).getText();
     }
 
-    public void BackToMainPage() {
+    public MainPage BackToMainPage() {
         driver.findElement(back).click();
-        new MainPage(driver);
+        return new MainPage(driver);
     }
 }

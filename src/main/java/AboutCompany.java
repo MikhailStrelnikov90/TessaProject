@@ -19,12 +19,11 @@ public class AboutCompany {
     }
 
     public String HeadCompanyPage(){
-
         return driver.findElement(headCompany).getText();
     }
 
-    public void BackToMainPage() {
+    public MainPage BackToMainPage() {
         driver.findElement(back).click();
-        new MainPage(driver);
+        return new MainPage(driver);
     }
 }

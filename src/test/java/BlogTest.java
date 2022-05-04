@@ -14,17 +14,17 @@ public class BlogTest {
 
     @Before
     public void start(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Mikhail-PC\\IdeaProjects\\MyTessaTests\\drivers\\chromedriver.exe");
+        String driverPath = System.getProperty("user.dir") + "\\drivers\\chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://mytessa.ru/");
         MainPage mainPage = new MainPage(driver);
-        mainPage.clickBlogButton();
+        blog = mainPage.clickBlogButton();
         for (String tab : driver.getWindowHandles()){
             driver.switchTo().window(tab);
         }
-        blog = new Blog(driver);
     }
 
     @Test //Переход на другие страницы блога при нажатии на пейджинг

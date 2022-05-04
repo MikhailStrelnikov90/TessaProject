@@ -23,8 +23,8 @@ public class AboutSystem {
         return driver.findElement(headSystem).getText();
     }
 
-    public void BackToMainPage() {
+    public MainPage BackToMainPage() {
         driver.findElement(back).click();
-        new MainPage(driver);
+        return new MainPage(driver);
     }
 }

@@ -35,14 +35,14 @@ public class Blog {
         return driver.findElement(By.xpath("//header[@class=\"desktop\"]//a[@title=\"Блог платформы TESSA\"]")).getText();
         }
 
-    public void clickArticles() {
+    public Articles clickArticles() {
         driver.findElement(articlesButton).click();
-        new Articles(driver);
+        return new Articles(driver);
     }
 
-    public void clickTags() {
+    public Tags clickTags() {
         driver.findElement(tagsButton).click();
-        new Tags(driver);
+        return new Tags(driver);
     }
 
     public void clickSearch() {

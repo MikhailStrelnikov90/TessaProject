@@ -22,8 +22,8 @@ public class AboutService {
         return driver.findElement(headService).getText();
     }
 
-    public void BackToMainPage() {
+    public MainPage BackToMainPage() {
         driver.findElement(back).click();
-        new MainPage(driver);
+        return new MainPage(driver);
     }
 }

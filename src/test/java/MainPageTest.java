@@ -17,7 +17,8 @@ private Blog blog;
 
     @Before
     public void start(){
-    System.setProperty("webdriver.chrome.driver", "C:\\Users\\Mikhail-PC\\IdeaProjects\\MyTessaTests\\drivers\\chromedriver.exe");
+    String driverPath = System.getProperty("user.dir") + "\\drivers\\chromedriver.exe";
+    System.setProperty("webdriver.chrome.driver", driverPath);
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     driver.manage().window().maximize();
@@ -26,12 +27,11 @@ private Blog blog;
     }
 
     @Test //Переход на другие страницы сайта через меню на главной странице
-    public void moveAllPagesOnMainPage(){
-        mainPage.listAllPages();
+    public void moveAllPagesOnMainPage() throws InterruptedException {
+        blog = mainPage.listAllPages();
         for (String tab : driver.getWindowHandles()){
             driver.switchTo().window(tab);
         }
-        blog = new Blog(driver);
         String textBlogPage = blog.textForAssertButtons();
         Assert.assertEquals("Блог платформы TESSA", textBlogPage);
     }
